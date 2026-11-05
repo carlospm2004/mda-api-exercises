@@ -16,7 +16,7 @@ app = FastAPI(title="FastAPI Intro")
 # TODO: Create the body model for POST /api/greet with one text field called 'name'
 # Hint: The field name is the key the client sends in the JSON body; it defaults to 'Guest'
 class GreetRequest(BaseModel):
-    _____: str = "Guest"
+    name: str = "Guest"
 
 
 @app.get("/", response_class=PlainTextResponse)
@@ -26,7 +26,7 @@ def index():
 
 # TODO: Create a route for '/about' that returns information about the app
 # Hint: Write the path after the slash; return a string describing your app
-@app.get("/_____", response_class=PlainTextResponse)
+@app.get("/about", response_class=PlainTextResponse)
 def about():
     return "This is a FastAPI introduction exercise to learn basic routing and JSON handling."
 
@@ -34,16 +34,16 @@ def about():
 # TODO: Create a route for '/api/hello' that returns a JSON message
 # Hint: Give the function a name; FastAPI turns a returned dict into JSON
 @app.get("/api/hello")
-def _____():
+def hello_world():
     # TODO: Return a JSON object with a 'message' key
     # Hint: return {'message': 'your message here'}
-    return {"_____": "Hello, World!"}
+    return {"message": "Hello, World!"}
 
 
 # TODO: Create a route for '/api/user/{username}' that accepts a username parameter
 # Hint: Put the parameter name in braces in the path and use the same name as a function parameter
-@app.get("/api/user/{_____}")
-def get_user(_____: str):
+@app.get("/api/user/{username}")
+def get_user(username: str):
     # TODO: Return a JSON object with the username
     # Hint: Return a dictionary with user information
     return {"username": _____, "message": f"Welcome, {_____}!"}
